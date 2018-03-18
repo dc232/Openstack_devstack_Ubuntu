@@ -86,12 +86,26 @@ sleep 2
 source openrc
 }
 
+add_a_keypair () {
+    cat << EOF 
+    #######################
+    Creating keypair to boot
+    machines
+    #######################
+EOF
+
+sleep 2
+
+nova keypair-add test
+}
+
 
 
 overall_setup () {
     upgrade_and_time_check
     service_user_no_password
     devstack_config
+    add_a_keypair
 }
 
 
